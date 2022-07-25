@@ -1,5 +1,5 @@
-data "aws_ami" "linux" {
-  most_recent = true
+data "aws_ami" "latest_amazon_linux_img" {
+  most_recent      = true
   owners           = ["amazon"]
   filter {
     name   = "name"
