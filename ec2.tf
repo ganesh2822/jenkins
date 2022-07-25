@@ -25,7 +25,7 @@ resource "aws_instance" "app" {
         volume_type         = "gp2"
         volume_size         = 30
     }
-    associate_public_ip_address = true
+    associate_public_ip_address = false
     network_interface {
         network_interface_id = aws_network_interface.private_network_interface.id
         device_index = 0
