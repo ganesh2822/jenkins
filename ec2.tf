@@ -1,9 +1,8 @@
 data "aws_ami" "latest_amazon_linux_img" {
   most_recent      = true
-  owners           = ["amazon"]
   filter {
     name   = "name"
-    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+    values = ["Amazon Linux 2 Kernel 5.10 AMI 2.0.20220606.1 x86_64 HVM gp2"]
   }
 
   filter {
@@ -19,20 +18,16 @@ resource "aws_network_interface" "private_network_interface" {
 }
 
 resource "aws_instance" "app" {
-    ami                       = data.aws_ami.latest_amazon_linux_img.id
+    ami                       = "ami-0cff7528ff583bf9a"
     instance_type             = "t2.micro"
     root_block_device {
         volume_type         = "gp2"
-        volume_size         = 30
+        volume_size         = 10
     }
     key_name = "jenkins"
     tags = {
         Name = "${var.vendor}-${var.environment}-app"
     }
-    lifecycle {
-        ignore_changes = [
-            ami,
-        ]
-    }
+        
 }
 
