@@ -8,10 +8,10 @@ variable "region" {
     type = string
     default = "us-east-1"
 }
-variable "AKIARO42PKYVLQGWSCET" {
+variable "access_key" {
     type = string
 }
-variable "cxQmY6aas05QeRkxhAtuVCzrcztmZJxh9ltSQrPq" {
+variable "sectet_key" {
     type = string
 }
 
