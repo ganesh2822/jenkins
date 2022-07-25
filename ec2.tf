@@ -46,25 +46,3 @@ resource "aws_network_interface" "network_interface" {
   security_groups    = [aws_security_group.db-sg-grp.id]
   private_ips        = ["10.0.110.10"]
 }
-
-resource "aws_instance" "db" {
-    ami                       = data.aws_ami.latest_amazon_linux_img.id
-    instance_type             = "t2.micro"
-    root_block_device {
-        volume_type         = "gp2"
-        volume_size         = 50
-    }
-    network_interface {
-        network_interface_id = aws_network_interface.network_interface.id
-        device_index = 0
-    }
-    key_name = "jenkins"
-    tags = {
-        Name = "${var.vendor}-${var.environment}-db"
-    }
-    lifecycle {
-        ignore_changes = [
-            ami,
-        ]
-    }
-}
