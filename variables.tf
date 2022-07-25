@@ -11,7 +11,7 @@ variable "region" {
 variable "access_key" {
     type = string
 }
-variable "sectet_key" {
+variable "secret_key" {
     type = string
 }
 
