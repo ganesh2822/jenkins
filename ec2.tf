@@ -30,7 +30,7 @@ resource "aws_instance" "app" {
         network_interface_id = aws_network_interface.private_network_interface.id
         device_index = 0
     }
-    key_name = "tests"
+    key_name = "jenkins"
     tags = {
         Name = "${var.vendor}-${var.environment}-app"
     }
