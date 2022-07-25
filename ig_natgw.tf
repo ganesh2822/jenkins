@@ -7,18 +7,3 @@ resource "aws_internet_gateway" "gw" {
   }
 }
 
-# CREATE ELASTIC IP WITH NAT GATEWAY
-
-resource "aws_eip" "lb" {
-  depends_on    = [aws_internet_gateway.gw]
-  vpc           = true
-}
-
-resource "aws_nat_gateway" "natgw" {
-  allocation_id = aws_eip.lb.id
-  subnet_id     = aws_subnet.public-subnet-1.id
-  depends_on = [aws_internet_gateway.gw]
-  tags = {
-    Name = "${lower(var.vendor)}-${lower(var.environment)}-nat-gw"
-  }
-}
