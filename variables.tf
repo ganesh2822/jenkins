@@ -8,10 +8,10 @@ variable "region" {
     type = string
     default = "us-west-2"
 }
-variable "access_key" {
+variable "AKIARO42PKYVLQGWSCET" {
     type = string
 }
-variable "secret_key" {
+variable "cxQmY6aas05QeRkxhAtuVCzrcztmZJxh9ltSQrPq" {
     type = string
 }
 
