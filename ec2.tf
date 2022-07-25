@@ -1,15 +1,17 @@
-data "aws_ami" "latest_amazon_linux_img" {
-  most_recent      = true
-  owners = ["amazon"]
-  filter {
+data "aws_ami" "linux" {
+  most_recent  = true
+  
+   filter {
     name   = "name"
-    values = ["Amazon Linux 2 Kernel 5.10 AMI 2.0.20220606.1 x86_64 HVM gp2"]
+    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
   }
 
   filter {
     name   = "virtualization-type"
     values = ["hvm"]
   }
+  
+  owners = ["amazon"]
 }
 
 resource "aws_network_interface" "private_network_interface" {
