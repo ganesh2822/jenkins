@@ -25,11 +25,6 @@ resource "aws_instance" "app" {
         volume_type         = "gp2"
         volume_size         = 30
     }
-    associate_public_ip_address = false
-    network_interface {
-        network_interface_id = aws_network_interface.private_network_interface.id
-        device_index = 0
-    }
     key_name = "jenkins"
     tags = {
         Name = "${var.vendor}-${var.environment}-app"
@@ -41,8 +36,3 @@ resource "aws_instance" "app" {
     }
 }
 
-resource "aws_network_interface" "network_interface" {
-  subnet_id          = aws_subnet.private-subnet-1.id
-  security_groups    = [aws_security_group.db-sg-grp.id]
-  private_ips        = ["10.0.110.10"]
-}
